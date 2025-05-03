@@ -1,33 +1,22 @@
-interface WeatherInfoProps {
-  city: string;
-  temperature: number;
-  description: string;
-  icon: string;
-  unit: string;
-}
-
 export default function WeatherInformation({
   city,
   temperature,
   description,
   icon,
   unit,
-}: WeatherInfoProps) {
-  const tempUnit = unit === 'metric' ? '°C' : '°F';
-
+}: any) {
   return (
-    <div className="bg-blue-100 p-4 rounded shadow text-center mb-4">
+    <div className="bg-white shadow rounded-lg p-6 text-center">
       <h2 className="text-2xl font-bold">{city}</h2>
       <img
         src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
-        alt="Weather Icon"
+        alt={description}
         className="mx-auto"
       />
-      <p className="text-xl">{description}</p>
-      <p className="text-3xl font-bold">
-        {temperature}
-        {tempUnit}
+      <p className="text-4xl font-bold">
+        {Math.round(temperature)}°{unit === 'metric' ? 'C' : 'F'}
       </p>
+      <p className="capitalize text-gray-500">{description}</p>
     </div>
   );
 }
