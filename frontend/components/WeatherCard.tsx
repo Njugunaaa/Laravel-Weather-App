@@ -22,11 +22,13 @@ export default function WeatherDisplay({ weather, unit }: WeatherDisplayProps) {
   return (
     <div className="bg-white rounded-lg p-6 shadow flex flex-col items-center text-center space-y-4 w-full md:w-1/3">
       {/* D: Weather icon */}
-      <img
-        src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`}
-        alt="weather icon"
-        className="w-32 h-32"
-      />
+      {weather?.weather?.[0]?.icon && (
+  <img
+    src={`https://openweathermap.org/img/wn/${weather?.weather?.[0]?.icon}@4x.png`}
+    alt="weather icon"
+    className="w-32 h-32"
+  />
+)}
 
       {/* E: Temperature */}
       <h1 className="text-4xl font-bold text-gray-800">
